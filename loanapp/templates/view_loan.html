@@ -1,0 +1,49 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>View Loan</title>
+</head>
+<body>
+
+<h2>Loan Details</h2>
+
+<p><b>Loan Number:</b> {{ loan.loan_number }}</p>
+<p><b>Lender:</b> {{ loan.lender.user_id }}</p>
+<p><b>Borrower:</b> {{ loan.borrower.user_id }}</p>
+<p><b>Total Amount:</b> {{ loan.total_amount }}</p>
+<p><b>Remaining:</b> {{ loan.remaining_amount }}</p>
+<p><b>Status:</b> {{ loan.status }}</p>
+
+<hr>
+
+<h3>Transactions</h3>
+
+<table border="1" cellpadding="5">
+    <tr>
+        <th>Transaction ID</th>
+        <th>Paid Amount</th>
+        <th>Date & Time</th>
+        <th>Balance After</th>
+    </tr>
+
+    {% for t in transactions %}
+    <tr>
+        <td>{{ t.transaction_id }}</td>
+        <td>{{ t.paid_amount }}</td>
+        <td>{{ t.transaction_datetime }}</td>
+        <td>{{ t.balance_after }}</td>
+    </tr>
+    {% empty %}
+    <tr><td colspan="4">No transactions yet</td></tr>
+    {% endfor %}
+</table>
+
+<br>
+<a href="{% url 'dashboard' %}">Back</a>
+
+</body>
+</html>

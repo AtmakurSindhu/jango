@@ -1,0 +1,51 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+</head>
+<body>
+
+<h2>Dashboard</h2>
+
+<a href="{% url 'give_loan' %}">Give Loan</a> |
+<a href="{% url 'logout' %}">Logout</a>
+
+<hr>
+
+<h3>Your Loans</h3>
+
+<table border="1" cellpadding="5">
+    <tr>
+        <th>Loan Number</th>
+        <th>Total Amount</th>
+        <th>Remaining</th>
+        <th>Status</th>
+        <th>Action</th>
+    </tr>
+
+    {% for loan in loans %}
+    <tr>
+        <td>{{ loan.loan_number }}</td>
+        <td>{{ loan.total_amount }}</td>
+        <td>{{ loan.remaining_amount }}</td>
+        <td>{{ loan.status }}</td>
+        <td>
+    <a href="{% url 'view_loan' loan.loan_number %}">View</a>
+
+    {% if loan.status == "ACTIVE" and loan.borrower.user_id == request.session.user_id %}
+        | <a href="{% url 'pay_loan' loan.loan_number %}">Pay</a>
+    {% endif %}
+</td>
+
+    </tr>
+    {% empty %}
+    <tr><td colspan="5">No loans</td></tr>
+    {% endfor %}
+</table>
+
+</body>
+</html>

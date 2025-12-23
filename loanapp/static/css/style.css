@@ -1,0 +1,260 @@
+/* =========================
+   ROOT VARIABLES (THEME)
+========================= */
+:root {
+    --primary: #2563eb;
+    --secondary: #06b6d4;
+    --success: #22c55e;
+    --danger: #ef4444;
+    --dark: #0f172a;
+    --light: #f8fafc;
+    --glass: rgba(255, 255, 255, 0.85);
+}
+
+/* =========================
+   RESET
+========================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Inter", "Segoe UI", sans-serif;
+}
+
+/* =========================
+   BODY
+========================= */
+body {
+    background: linear-gradient(120deg, #dbeafe, #f0f9ff);
+    min-height: 100vh;
+    padding: 40px;
+    color: var(--dark);
+}
+
+/* =========================
+   CONTAINER (GLASS)
+========================= */
+.container {
+    max-width: 1000px;
+    margin: auto;
+    background: var(--glass);
+    backdrop-filter: blur(12px);
+    padding: 35px;
+    border-radius: 18px;
+    box-shadow:
+        0 20px 40px rgba(0,0,0,0.12),
+        inset 0 1px 0 rgba(255,255,255,0.4);
+    animation: fadeIn 0.6s ease;
+}
+
+/* =========================
+   ANIMATIONS
+========================= */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* =========================
+   HEADINGS
+========================= */
+h2 {
+    text-align: center;
+    font-size: 28px;
+    margin-bottom: 25px;
+    background: linear-gradient(to right, var(--primary), var(--secondary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+h3 {
+    margin: 25px 0 15px;
+    color: var(--dark);
+}
+
+/* =========================
+   NAV BAR LINKS
+========================= */
+.nav-links {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 25px;
+}
+
+.nav-links a {
+    font-weight: 600;
+}
+
+/* =========================
+   FORMS
+========================= */
+form {
+    margin-top: 10px;
+}
+
+input {
+    width: 100%;
+    padding: 14px;
+    margin-bottom: 16px;
+    border-radius: 10px;
+    border: 1px solid #c7d2fe;
+    background: rgba(255,255,255,0.9);
+    font-size: 15px;
+    transition: all 0.3s ease;
+}
+
+input:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(37,99,235,0.2);
+}
+
+/* =========================
+   BUTTONS (GRADIENT)
+========================= */
+button {
+    width: 100%;
+    padding: 14px;
+    border: none;
+    border-radius: 12px;
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 25px rgba(37,99,235,0.35);
+}
+
+button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 30px rgba(37,99,235,0.45);
+}
+
+button:active {
+    transform: scale(0.98);
+}
+
+/* =========================
+   LINKS
+========================= */
+a {
+    color: var(--primary);
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+a:hover {
+    color: var(--secondary);
+}
+
+/* =========================
+   TABLES (MODERN)
+========================= */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    border-radius: 14px;
+    overflow: hidden;
+    background: white;
+}
+
+th {
+    background: linear-gradient(135deg, var(--dark), #1e293b);
+    color: white;
+    padding: 14px;
+    text-align: left;
+}
+
+td {
+    padding: 14px;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+tr {
+    transition: all 0.25s ease;
+}
+
+tr:hover {
+    background: #f1f5f9;
+    transform: scale(1.01);
+}
+
+/* =========================
+   STATUS BADGES
+========================= */
+.status-active {
+    color: var(--success);
+    font-weight: bold;
+}
+
+.status-completed {
+    color: var(--danger);
+    font-weight: bold;
+}
+
+/* =========================
+   ALERT / MESSAGE BOX
+========================= */
+.message {
+    margin-top: 20px;
+    padding: 14px;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #fee2e2, #fecaca);
+    color: #991b1b;
+    text-align: center;
+    font-weight: 500;
+    animation: shake 0.4s ease;
+}
+
+@keyframes shake {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    50% { transform: translateX(5px); }
+    75% { transform: translateX(-5px); }
+    100% { transform: translateX(0); }
+}
+
+/* =========================
+   FOOTER LINK
+========================= */
+.footer-link {
+    text-align: center;
+    margin-top: 18px;
+}
+
+/* =========================
+   RESPONSIVE DESIGN
+========================= */
+@media (max-width: 900px) {
+    body {
+        padding: 20px;
+    }
+
+    .container {
+        padding: 25px;
+    }
+
+    table, thead, tbody, th, td, tr {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 600px) {
+    .nav-links {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+    }
+
+    h2 {
+        font-size: 24px;
+    }
+}
